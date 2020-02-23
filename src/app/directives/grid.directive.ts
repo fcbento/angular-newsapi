@@ -1,7 +1,7 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appGrid]'
+  selector: '[Grid]'
 })
 export class GridDirective implements OnInit {
 
@@ -23,7 +23,7 @@ export class GridDirective implements OnInit {
 
   ngOnInit() {
     let classes = this.toCssCrid(this.cols).split(' ')
-    let col = 'col-xs-12'
+    let col: string = 'col-xs-12'
     this.el.nativeElement.classList.add(classes[0] || col, classes[1] || col, classes[2] || col, classes[3] || col)
   }
 
