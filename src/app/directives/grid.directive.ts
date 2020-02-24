@@ -10,6 +10,7 @@ export class GridDirective implements OnInit {
   constructor (private el: ElementRef) {}
 
   public toCssCrid(numbers: string): string {
+    console.log(numbers)
     const cols: any[] = numbers ? numbers.split(' ') : []
     let classes: string = ''
 
