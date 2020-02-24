@@ -1,9 +1,32 @@
-<form class="form">
-  <input type="text" placeholder="Email" class="icon__email">
-  <br>
-  <input type="password" placeholder="Password" class="icon__password">
-  <br>
+<form class="form" (ngSubmit)="onSignIn()" [formGroup]="form">
 
-  <input type="submit" value="SIGN IN">
+  <input  
+    type="text" 
+    id="email" 
+    name="email" 
+    placeholder="Email" 
+    formControlName="email" 
+    class="icon__email" 
+    [ngClass]="form.get('email').hasError('pattern') && form.get('email').touched 
+              || form.get('email').hasError('required') && form.get('email').touched ? 'input-error' : ''">
+    
+    <input 
+      type="password" 
+      id="password" 
+      name="password" 
+      placeholder="Password" 
+      formControlName="password" 
+      class="icon__password" 
+      minlength="6"
+      [ngClass]="form.get('password').hasError('minlength') && form.get('password').touched 
+                || form.get('password').hasError('required') && form.get('password').touched  ? 'input-error' : ''">
 
+  <input 
+    type="submit" 
+    value="SIGN IN"  
+    [disabled]="form.get('email').hasError('required') ||
+                form.get('email').hasError('pattern') ||
+                form.get('password').hasError('minlength') || 
+                form.get('password').hasError('required')">
 </form>
+

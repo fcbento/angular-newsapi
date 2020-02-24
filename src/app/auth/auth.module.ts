@@ -8,6 +8,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { MaterialModule } from '../material/material.module';
 import { HeadTitleComponent } from './head-title/head-title.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     CommonModule,
     DirectiveModule,
     AuthRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }
