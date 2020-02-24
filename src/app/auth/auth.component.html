@@ -3,26 +3,7 @@
 
         <app-head-title></app-head-title>
 
-        <div class="login__form">
-
-            <app-sign-in *ngIf="showSignin"></app-sign-in>
-            <app-sign-up *ngIf="showSignup"></app-sign-up>
-
-            <p class="sign-up-link" *ngIf="showSignin">
-                Don't have an account?
-                <span class="sign-up-link__span" (click)="onGoToSignUp()">
-                    Sign Up now
-                </span>
-            </p>
-
-            <p class="sign-up-link" *ngIf="showSignup">
-               Already have an account?
-                <span class="sign-up-link__span" (click)="onGoToSignIn()">
-                    Sign In now
-                </span>
-            </p>
-
-        </div>
+        <app-sign-in></app-sign-in>
 
         <app-social-media></app-social-media>
 

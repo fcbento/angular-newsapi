@@ -8,7 +8,8 @@
     formControlName="email" 
     class="icon__email" 
     [ngClass]="form.get('email').hasError('pattern') && form.get('email').touched 
-              || form.get('email').hasError('required') && form.get('email').touched ? 'input-error' : ''">
+              || form.get('email').hasError('required') && form.get('email').touched 
+              ? 'input-error' : ''">
     
     <input 
       type="password" 
@@ -19,14 +20,50 @@
       class="icon__password" 
       minlength="6"
       [ngClass]="form.get('password').hasError('minlength') && form.get('password').touched 
-                || form.get('password').hasError('required') && form.get('password').touched  ? 'input-error' : ''">
+                || form.get('password').hasError('required') && form.get('password').touched  
+                ? 'input-error' : ''">
 
+    <input 
+      type="password" 
+      id="repassword" 
+      name="repassword" 
+      placeholder="Retype passowrd" 
+      formControlName="repassword"
+      class="icon__password" 
+      minlength="6"
+      *ngIf="!showSignType"
+      [ngClass]="form.get('repassword').hasError('minlength') && form.get('repassword').touched 
+                 || form.get('repassword').hasError('required') && form.get('repassword').touched  
+                 ? 'input-error' : ''">
+   <br>
+  <small *ngIf="passwordDontMatch" class="match-password">Passwords don't match</small>
+  
   <input 
     type="submit" 
-    value="SIGN IN"  
+    value="{{signActionBtn}}"  
+    *ngIf="showSignType"
     [disabled]="form.get('email').hasError('required') ||
                 form.get('email').hasError('pattern') ||
                 form.get('password').hasError('minlength') || 
                 form.get('password').hasError('required')">
+
+  <input 
+    type="submit" 
+    value="{{signActionBtn}}"
+    *ngIf="!showSignType"  
+    [disabled]="form.get('email').hasError('required') ||
+                form.get('email').hasError('pattern') ||
+                form.get('password').hasError('minlength') || 
+                form.get('password').hasError('required') ||
+                form.get('repassword').hasError('minlength') || 
+                form.get('repassword').hasError('required') || 
+                passwordsDontMatch()">
+
 </form>
+  
+<p class="sign-up-link"> {{signInfo}}
+    <span class="sign-up-link__span" (click)="signType()">
+      {{signAction}}
+    </span>
+</p>
 
