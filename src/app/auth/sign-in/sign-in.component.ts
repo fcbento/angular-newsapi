@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import EmailValidator from '../../utils/email.validator';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,51 +9,47 @@ import EmailValidator from '../../utils/email.validator';
   styleUrls: ['./sign-in.component.scss', '../auth.component.scss']
 })
 export class SignInComponent implements OnInit {
-  
+
   public form: FormGroup;
-  public signInType: boolean = true;
-  public passwordDontMatch: boolean = false;
   public showSignType: boolean = true;
   public signInfo: string = '';
   public signAction: string = '';
   public signActionBtn: string = '';
-  
-  constructor(public formBuilder: FormBuilder) {
+
+  constructor(public formBuilder: FormBuilder, public service: AuthService) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(EmailValidator())]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repassword: ['', [Validators.required, Validators.minLength(6)]]
     });
-   }
+  }
 
   ngOnInit(): void {
-    this.checkPage();
+    this.onCheckPage();
   }
 
-  public onSignIn() {
-    
-  }
-
-  public checkPage(){
+  public onCheckPage(): void {
     this.showSignType ? this.signInfo = 'Dont have an account?' : this.signInfo = 'Already have an account?';
     this.showSignType ? this.signAction = 'Sign Up now' : this.signAction = 'Sign In'
     this.showSignType ? this.signActionBtn = 'Sign In' : this.signActionBtn = 'Sign Up'
-
   }
 
-  public signType(){
+  public onSignType(): void {
     this.showSignType = !this.showSignType;
     this.form.reset();
-    this.checkPage();
+    this.onCheckPage();
   }
 
-  public passwordsDontMatch (){
-    
-    if(this.form.value.password !== this.form.value.repassword){
-      this.passwordDontMatch = !this.passwordDontMatch;
-      return true
-    }
+  public onSign(): void {
+    this.showSignType ? this.onSignIn() : this.onSignUp();
   }
 
+  public onSignIn(): void {
+    this.service.signinUser(this.form.value.email, this.form.value.password)
+  }
+
+  public onSignUp(): void {
+    this.service.signupUser(this.form.value.email, this.form.value.password);
+  }
 
 }
