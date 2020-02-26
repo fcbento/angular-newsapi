@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatSliderModule } from '@angular/material/slider';
+import { Component, OnInit  } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +11,13 @@ export class AppComponent {
 
   constructor() {
   }
+
+  ngOnInit() {
+    firebase.initializeApp({
+      apiKey: "AIzaSyDijS2TO1E3qruNuQ26vTaIyUavGlHUxvs",
+      authDomain: "newsapi-a01e6.firebaseapp.com"
+    });
+  }
+  
 
 }

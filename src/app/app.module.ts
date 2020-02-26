@@ -3,20 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GridDirective } from './directives/grid.directive';
-import { RowDirective } from './directives/row.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthModule } from './auth/auth.module';
+import { DirectiveModule } from './directives/directive.module';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GridDirective,
-    RowDirective
+  declarations: [ 
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    DirectiveModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AuthModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
