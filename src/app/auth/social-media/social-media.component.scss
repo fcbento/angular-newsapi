@@ -1,17 +1,16 @@
 div{
-    padding: 20px;
+    padding-top: 40px;
 }
+
 p{
     color: #d3d3d3;
     letter-spacing: 1.5px;
-   
 }
 
 img{
-    margin: 9px 29px 0 20px;
+    margin: 10px 15px 0 20px;
     width: 30px;
     cursor: pointer;
-    padding: 10px;
     transition: all 0.5s ease-in-out;
     &:hover{
         background-color: #f5f5f5;

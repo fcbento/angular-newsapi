@@ -15,17 +15,16 @@ export class AuthService {
   public signupUser(email: string, password: string): void {
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/news']);
     }).catch((error) => {
       return error;
     });
   }
 
   public signinUser(email: string, password: string): Promise<any> {
-
     let login = firebase.auth().signInWithEmailAndPassword(email, password).then(res => {
 
-      //this.router.navigate(['']);
+      this.router.navigate(['/news']);
 
       firebase.auth().currentUser.getIdToken()
         .then((token: string) => {
@@ -40,33 +39,13 @@ export class AuthService {
   }
 
   public socialMediaAuth(media: string): void {
-
-    let provider: any;
-
-    switch (media) {
-      case 'FACEBOOK':
-        provider = new firebase.auth.FacebookAuthProvider();
-        break;
-      case 'GOOGLE':
-        provider = new firebase.auth.GoogleAuthProvider();
-        break;
-      case 'TWITTER':
-        provider = new firebase.auth.TwitterAuthProvider();
-        break;
-      case 'GITHUB':
-        provider = new firebase.auth.GithubAuthProvider();
-        break;
-      default:
-        break;
-    }
-
-    firebase.auth().signInWithPopup(provider).then(function (result) {
-      let token = result.credential['accessToken'];
+    firebase.auth().signInWithPopup(this.getProvider(media)).then((result) => {
+      this.token = result.credential['accessToken'];
       let user = result.user;
+      this.router.navigate(['/news']);
     }).catch(function (error) {
       return error
     });
-
   }
 
   public getToken(): string {
@@ -84,6 +63,23 @@ export class AuthService {
   public logout(): void {
     firebase.auth().signOut();
     this.token = null;
+  }
+
+  public getProvider(provider: string): any {
+
+    switch (provider) {
+      case 'FACEBOOK':
+        return new firebase.auth.FacebookAuthProvider();
+      case 'GOOGLE':
+        return new firebase.auth.GoogleAuthProvider();
+      case 'TWITTER':
+        return new firebase.auth.TwitterAuthProvider();
+      case 'GITHUB':
+        return new firebase.auth.GithubAuthProvider();
+      default:
+        break;
+    }
+
   }
 
 }
