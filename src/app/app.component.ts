@@ -18,6 +18,4 @@ export class AppComponent {
       authDomain: "newsapi-a01e6.firebaseapp.com"
     });
   }
-  
-
 }

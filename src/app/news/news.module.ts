@@ -7,13 +7,13 @@ import { DirectiveModule } from '../directives/directive.module';
 
 @NgModule({
   declarations: [
-    NewsComponent
+    NewsComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     NewsRoutingModule,
     DirectiveModule
-    ]
+  ]
 })
 export class NewsModule { }

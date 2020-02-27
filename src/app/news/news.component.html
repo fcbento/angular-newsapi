@@ -1,26 +1,23 @@
-<div Row [row]="'center'">
-  <div Grid [cols]="'12 12 12 12'">
-    <mat-drawer-container class="side-container" autosize>
-      <mat-drawer #drawer class="sidenav" mode="side">
-        <ul>
+<div Row [row]="''" id="sidenav">
+  <nav Grid [cols]="'6'">
+    <mat-icon (click)="openSideBar()">menu</mat-icon>
+    <div id="sideBar" #sideBar>
+      <img src="/assets/logo.png" alt="Logo - News API" (click)="onClose()">
+      <ul>
+        <li *ngFor="let category of category.categories">
+          <a (click)="getNews(category)">{{category | titlecase}}</a>
+        </li>
+    
+        <span (mouseenter)="listCountries()">Countries</span>
+    
+      </ul>
 
-          <li *ngFor="let category of category.categories">
-            <a href="">{{category | titlecase }}</a>
-          </li>
-          <hr>
-
-          <li>
-            <span>Countries</span>
-          </li>
-          <hr>
-        </ul>
-
-      </mat-drawer>
-
-      <div class="side-content">
-        <mat-icon (click)="drawer.toggle()" color="primary">menu</mat-icon>
-      </div>
-    </mat-drawer-container>
-
-  </div>
+    </div>
+  </nav>
+  <section *ngIf="showCountries" (mouseleave)="unlistCountries()" class="arrow_box">
+    <span class="section-title">Countries</span>
+    <p *ngFor="let country of country.countries" (click)="onClose()">{{ country.name === 'usa' ? (country.name | uppercase) : (country.name | titlecase)}}</p>
+  </section>
 </div>
+
+<router-outlet></router-outlet>
