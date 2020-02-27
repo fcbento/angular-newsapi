@@ -4,7 +4,6 @@ import { MaterialModule } from '../material/material.module';
 import { NewsComponent } from './news.component';
 import { NewsRoutingModule } from './news.routing.module';
 import { DirectiveModule } from '../directives/directive.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -14,8 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     MaterialModule,
     NewsRoutingModule,
-    DirectiveModule,
-    NgbModule,
-  ]
+    DirectiveModule
+    ]
 })
 export class NewsModule { }
