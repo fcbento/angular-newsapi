@@ -1,0 +1,23 @@
+<div Row [row]="''" id="sidenav">
+  <nav Grid [cols]="'6'">
+    <mat-icon (click)="openSideBar()">menu</mat-icon>
+    <div id="sideBar" #sideBar>
+      <img src="/assets/logo.png" alt="Logo - News API" (click)="onClose()">
+      <ul>
+        <li *ngFor="let category of category.categories">
+          <a (click)="getNews(category)">{{category | titlecase}}</a>
+        </li>
+    
+        <span (mouseenter)="listCountries()">Countries</span>
+    
+      </ul>
+
+    </div>
+  </nav>
+  <section *ngIf="showCountries" (mouseleave)="unlistCountries()" class="arrow_box">
+    <span class="section-title">Countries</span>
+    <p *ngFor="let country of country.countries" (click)="onClose()">{{ country.name === 'usa' ? (country.name | uppercase) : (country.name | titlecase)}}</p>
+  </section>
+</div>
+
+<router-outlet></router-outlet>

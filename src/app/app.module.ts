@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { DirectiveModule } from './directives/directive.module';
 import { MaterialModule } from './material/material.module';
+import { NewsModule } from './news/news.module';
 
 @NgModule({
   declarations: [ 
@@ -18,7 +19,8 @@ import { MaterialModule } from './material/material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
-    MaterialModule
+    MaterialModule,
+    NewsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
