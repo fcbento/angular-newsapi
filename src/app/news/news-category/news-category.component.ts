@@ -8,7 +8,7 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsCategoryComponent implements OnInit {
 
-  @Input() news: any[] = [];
+  @Input() news: any = [];
 
   constructor(private service: NewsService) { }
 

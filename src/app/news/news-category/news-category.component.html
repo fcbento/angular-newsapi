@@ -1,5 +1,16 @@
-<div Row [row]="'center center'">
+<div Row [row]="'center center'" id="news" *ngFor="let new of news">
+    <div  Grid [cols]="'12 4 4 4'" >
+        <span class="date">{{new.publishedAt | date:'longDate'}}</span>
+    </div >
+
+    <div  Grid [cols]="'12 4 4 4'" >
+        <h2 class="title">{{new.title}}</h2>
+        <p class="descirption">{{new.description}}</p>
+        <!-- <p class="descirption">{{new.content}}</p> -->
+        <p class="author">by {{new.author ? (new.author | uppercase) : 'Unknown'}}</p>
+    </div>
+
     <div Grid [cols]="'12 4 4 4'">
-        
+        <img src="{{new.urlToImage}}" alt="">
     </div>
 </div>

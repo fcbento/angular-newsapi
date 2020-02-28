@@ -21,7 +21,7 @@ export class NewsService {
   }
 
   public getNews(): any[] {
-    return this.news || [];
+    return this.news['articles'] || [];
   }
 
   public setNews(news: any[]): void {
