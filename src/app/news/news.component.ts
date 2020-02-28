@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Category } from '../models/category.model'
 import { Country } from '../models/countries.model';
+import { NewsService } from '../services/news.service';
 
 @Component({
   selector: 'app-news',
@@ -14,7 +15,8 @@ export class NewsComponent implements OnInit {
   public showCountries: boolean = false;
 
   @ViewChild('sideBar') sideBar: ElementRef;
-  constructor() { }
+  
+  constructor(private service: NewsService) { }
 
   ngOnInit() {
 
@@ -40,7 +42,16 @@ export class NewsComponent implements OnInit {
   }
 
   public getNews(category: string): void{
-    console.log(category)
+    this.service.getCategoryNews(category).subscribe(news => {
+      console.log(news)
+    })
+    this.onClose();
+  }
+
+  public getNewsByCountry(country: any) {
+    this.service.getNewsByCountry(country).subscribe(news => {
+      console.log(news)
+    })
     this.onClose();
   }
 

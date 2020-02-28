@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { DirectiveModule } from './directives/directive.module';
 import { MaterialModule } from './material/material.module';
 import { NewsModule } from './news/news.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [ 
@@ -17,6 +18,7 @@ import { NewsModule } from './news/news.module';
     BrowserModule,
     DirectiveModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AuthModule,
     MaterialModule,
