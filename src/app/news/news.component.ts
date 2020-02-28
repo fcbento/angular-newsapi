@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
 import { Category } from '../models/category.model'
 import { Country } from '../models/countries.model';
 import { NewsService } from '../services/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -15,8 +16,8 @@ export class NewsComponent implements OnInit {
   public showCountries: boolean = false;
 
   @ViewChild('sideBar') sideBar: ElementRef;
-  
-  constructor(private service: NewsService) { }
+
+  constructor(private service: NewsService, private router: Router) { }
 
   ngOnInit() {
 
@@ -41,18 +42,26 @@ export class NewsComponent implements OnInit {
     this.showCountries = false
   }
 
-  public getNews(category: string): void{
-    this.service.getCategoryNews(category).subscribe(news => {
-      console.log(news)
+  public getNews(category: string): void {
+    this.service.getCategoryNews(category).subscribe((news: any[]) => {
+      this.service.setNews(news);
+      this.onGoToCategory();
     })
     this.onClose();
   }
 
   public getNewsByCountry(country: any) {
-    this.service.getNewsByCountry(country).subscribe(news => {
-      console.log(news)
+    this.service.getNewsByCountry(country).subscribe((news: any[]) => {
+      this.service.setNews(news);
+      this.onGoToCategory();
     })
     this.onClose();
+  }
+
+  public onGoToCategory(): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['news/category']);
+    });
   }
 
 }

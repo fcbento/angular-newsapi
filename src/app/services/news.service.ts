@@ -8,6 +8,8 @@ import { API_TOKEN } from '../api/app.api'
 })
 export class NewsService {
 
+  private news: any[] = [];
+
   constructor(private http: HttpClient) { }
 
   public getCategoryNews(category: string) {
@@ -16,6 +18,14 @@ export class NewsService {
 
   public getNewsByCountry(country: any) {
     return this.http.get(`${API_BACK}top-headlines?country=${country.short}&apiKey=${API_TOKEN}`)
+  }
+
+  public getNews(): any[] {
+    return this.news || [];
+  }
+
+  public setNews(news: any[]): void {
+    this.news = news || [];
   }
 
 }
