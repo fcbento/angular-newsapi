@@ -9,6 +9,10 @@ import { DirectiveModule } from './directives/directive.module';
 import { MaterialModule } from './material/material.module';
 import { NewsModule } from './news/news.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { LoaderService } from './services/loader.service';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [ 
@@ -22,9 +26,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AuthModule,
     MaterialModule,
-    NewsModule
+    NewsModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
