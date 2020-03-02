@@ -8,13 +8,15 @@ import { MaterialModule } from '../material/material.module';
 import { HeadTitleComponent } from './head-title/head-title.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     SignInComponent,
     HeadTitleComponent,
-    SocialMediaComponent
+    SocialMediaComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     CommonModule,
