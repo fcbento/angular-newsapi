@@ -1,0 +1,110 @@
+#sideBar {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-right: 1px solid #ececec;;
+  box-shadow: rgba(0, 0, 0, 0.09) -1px 4px 6px;
+  overflow-x: hidden;
+  transition: all 0.1s linear;
+  padding-top: 40px;
+}
+
+li {
+  list-style: none;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  &:hover{
+    color: #612F74;
+  }
+}
+
+span{
+  color: grey;
+  font-weight: bold;
+}
+
+img{
+  width: 190px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+section {
+  position: relative;
+  left: 9%;
+  margin-top: 8px;
+  padding: 23px 76px 23px 28px;
+  box-shadow: rgba(0, 0, 0, 0.09) -1px 4px 6px;
+  background: white;
+  border: 1px solid #f7f7f7;
+  z-index: 1000;
+  text-align: left;
+
+  p{
+    margin: 0;
+    padding-bottom: 5px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+      color: #612F74;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  .line{
+    border: 1px solid #e7e7e7;
+  }
+
+  .section-title{
+      font-weight: 100;
+      color: grey;
+  }
+}
+
+.logout{
+  padding-top: 30px;
+  position: fixed;
+  color: red;
+}
+
+/** ******* Arrow ******** */
+.arrow_box {
+	position: relative;
+	background: #ffffff;
+  border: 1px solid #c3c8c9;
+  position: fixed;
+}
+.arrow_box:after, .arrow_box:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-right-color: #ffffff;
+	border-width: 12px;
+	margin-top: -12px;
+}
+.arrow_box:before {
+	border-color: rgba(195, 200, 201, 0);
+	border-right-color: #c3c8c9;
+	border-width: 13px;
+	margin-top: -13px;
+}

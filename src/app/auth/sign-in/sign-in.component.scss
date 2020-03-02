@@ -1,0 +1,23 @@
+.full-width{
+    width: 50%;
+    color: white;
+}
+
+.sign-up-link{
+    margin: 20px;
+    font-size: 16px;
+    color: #a5a5a5;
+    cursor: pointer;
+  }
+  
+  .sign-up-link__span{
+    color: #612F74;
+    font-weight: bold;
+    
+  }
+
+  .match-password{
+    color: #ff7979;
+    font-weight: bold;
+    transition: all ease-in-out 0.8s;
+  }
