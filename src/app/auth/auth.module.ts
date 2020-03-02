@@ -9,6 +9,8 @@ import { HeadTitleComponent } from './head-title/head-title.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     AuthRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ]
 })
 export class AuthModule { }

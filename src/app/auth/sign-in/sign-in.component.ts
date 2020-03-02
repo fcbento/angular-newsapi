@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import EmailValidator from '../../utils/email.validator';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToasterService } from 'src/app/services/toaster.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,7 +17,7 @@ export class SignInComponent implements OnInit {
   public signAction: string = '';
   public signActionBtn: string = '';
 
-  constructor(public formBuilder: FormBuilder, public service: AuthService) {
+  constructor(public formBuilder: FormBuilder, public service: AuthService, private toaster: ToasterService) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(EmailValidator())]],
       password: ['', [Validators.required, Validators.minLength(6)]],

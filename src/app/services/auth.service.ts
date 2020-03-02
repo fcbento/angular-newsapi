@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { LoaderService } from './loader.service';
+import { ToasterService } from './toaster.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public router: Router, public loader: LoaderService) { }
+  constructor(public router: Router, public loader: LoaderService, private toaster: ToasterService) { }
 
   public token: string;
 
@@ -19,6 +20,7 @@ export class AuthService {
       this.router.navigate(['/news']);
       this.loader.hide()
     }).catch((error) => {
+     this.toaster.showError(error.message)
       this.loader.hide()
       return error;
     });
@@ -36,6 +38,7 @@ export class AuthService {
         })
       return res;
     }).catch((error) => {
+      this.toaster.showError(error.message);
       this.loader.hide()
       return error;
     });
@@ -50,7 +53,9 @@ export class AuthService {
       let user = result.user;
       this.router.navigate(['/news']);
       this.loader.hide();
-    }).catch(function (error) {
+    }).catch((error) => {
+      this.toaster.showError(error.message);
+      this.toaster.showInfo(error.email);
       this.loader.hide()
       return error
     });
