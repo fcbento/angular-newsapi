@@ -1,6 +1,6 @@
 #sideBar {
   height: 100%;
-  width: 0;
+  width: 180px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -23,6 +23,9 @@ a{
   text-decoration: none;
   color: black;
   font-weight: bold;
+  &:hover{
+    color: #612F74;
+  }
 }
 
 span{
@@ -53,7 +56,7 @@ section {
     font-weight: bold;
     transition: all 0.2s ease-in-out;
     &:hover{
-      color: #cecece;
+      color: #612F74;
       cursor: pointer;
       transition: all 0.2s ease-in-out;
     }
@@ -73,7 +76,8 @@ section {
 .arrow_box {
 	position: relative;
 	background: #ffffff;
-	border: 1px solid #c3c8c9;
+  border: 1px solid #c3c8c9;
+  position: fixed;
 }
 .arrow_box:after, .arrow_box:before {
 	right: 100%;

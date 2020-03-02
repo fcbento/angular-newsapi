@@ -37,17 +37,11 @@ export class NewsComponent implements OnInit {
     return this.showCountries = false;
   }
 
-  public onClose(): void {
-    this.sideBar.nativeElement.style.width = "0";
-    this.showCountries = false
-  }
-
   public getNews(category: string): void {
     this.service.getCategoryNews(category).subscribe((news: any[]) => {
       this.service.setNews(news);
       this.onGoToCategory();
     })
-    this.onClose();
   }
 
   public getNewsByCountry(country: any) {
@@ -55,7 +49,6 @@ export class NewsComponent implements OnInit {
       this.service.setNews(news);
       this.onGoToCategory();
     })
-    this.onClose();
   }
 
   public onGoToCategory(): void {
