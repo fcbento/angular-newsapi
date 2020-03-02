@@ -3,6 +3,7 @@ import { Category } from '../models/category.model'
 import { Country } from '../models/countries.model';
 import { NewsService } from '../services/news.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-news',
@@ -17,7 +18,7 @@ export class NewsComponent implements OnInit {
 
   @ViewChild('sideBar') sideBar: ElementRef;
 
-  constructor(private service: NewsService, private router: Router) { }
+  constructor(private service: NewsService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
 
@@ -57,4 +58,8 @@ export class NewsComponent implements OnInit {
     });
   }
 
+  public logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/');
+  }
 }

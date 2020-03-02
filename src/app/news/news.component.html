@@ -1,5 +1,5 @@
 <div Row [row]="''" id="sidenav">
-  
+
   <section *ngIf="showCountries" (mouseleave)="unlistCountries()" class="arrow_box">
     <span class="section-title">Countries</span>
     <p *ngFor="let country of country.countries" (click)="getNewsByCountry(country)">
@@ -9,13 +9,19 @@
   <nav Grid [cols]="'6'">
     <mat-icon (click)="openSideBar()">menu</mat-icon>
     <div id="sideBar" #sideBar>
-      <img src="/assets/logo.png" alt="Logo - News API" (click)="onClose()">
+      <img src="/assets/logo.png" alt="Logo - News API">
       <ul>
         <li>
           <span (mouseenter)="listCountries()">Countries</span>
         </li>
         <li *ngFor="let category of category.categories" (mouseleave)="unlistCountries()">
           <a (click)="getNews(category)">{{category | titlecase}}</a>
+        </li>
+      </ul>
+
+      <ul class="logout">
+        <li>
+          <mat-icon (click)="logout()">power_settings_new</mat-icon>
         </li>
       </ul>
 
