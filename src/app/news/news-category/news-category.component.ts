@@ -14,6 +14,15 @@ export class NewsCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.news = this.service.getNews();
+    if (this.news.length <= 0) {
+      this.getFeaturingNews();
+    }
+  }
+
+  public getFeaturingNews() {
+    this.service.getCategoryNews('general').subscribe((news: any[]) => {
+      this.news = news['articles'];
+    });
   }
 
 }

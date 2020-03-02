@@ -7,6 +7,7 @@ const routes: Routes = [
   {
     path: 'news', component: NewsComponent,
     children: [
+      { path: '', component: NewsCategoryComponent },
       { path: 'category', component: NewsCategoryComponent }
     ]
   }
