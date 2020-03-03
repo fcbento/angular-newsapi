@@ -19,8 +19,12 @@ export class AuthService {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(res => {
       this.router.navigate(['/news']);
       this.loader.hide()
+      firebase.auth().currentUser.getIdToken()
+        .then((token: string) => {
+          this.token = token;
+        })
     }).catch((error) => {
-     this.toaster.showError(error.message)
+      this.toaster.showError(error.message)
       this.loader.hide()
       return error;
     });
@@ -29,7 +33,7 @@ export class AuthService {
   public signinUser(email: string, password: string): Promise<any> {
     this.loader.show()
     let login = firebase.auth().signInWithEmailAndPassword(email, password).then(res => {
-
+      console.log(res)
       this.router.navigate(['/news']);
       this.loader.hide()
       firebase.auth().currentUser.getIdToken()
